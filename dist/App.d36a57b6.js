@@ -33730,7 +33730,22 @@ if ("development" !== "production") {
     style: _propTypes.default.object
   });
 }
-},{"react-router":"../node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../node_modules/react/index.js","history":"../node_modules/history/esm/history.js","prop-types":"../node_modules/prop-types/index.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"../node_modules/react/cjs/react-jsx-runtime.development.js":[function(require,module,exports) {
+},{"react-router":"../node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../node_modules/react/index.js","history":"../node_modules/history/esm/history.js","prop-types":"../node_modules/prop-types/index.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"ThemeContext.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = require("react");
+
+const ThemeContext =
+/*#__PURE__*/
+(0, _react.createContext)(['green', () => {}]);
+var _default = ThemeContext;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"../node_modules/react/cjs/react-jsx-runtime.development.js":[function(require,module,exports) {
 /** @license React v17.0.1
  * react-jsx-runtime.development.js
  *
@@ -35011,7 +35026,7 @@ _defineProperty(Carousel, "defaultProps", {
 
 var _default = Carousel;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"Details.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"ErrorBoundary.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35023,7 +35038,127 @@ var _react = require("react");
 
 var _reactRouterDom = require("react-router-dom");
 
+var _jsxRuntime = require("react/jsx-runtime");
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+class ErrorBoundary extends _react.Component {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty(this, "state", {
+      hasError: false
+    });
+  }
+
+  static getDerivedStateFromError() {
+    return {
+      hasError: true,
+      redirect: false
+    };
+  }
+
+  componentDidCatch(error, info) {
+    console.error('ErrorBoundary caught an error', error, info);
+  }
+
+  componentDidUpdate() {
+    if (this.state.hasError) {
+      setTimeout(() => this.setState({
+        redirect: true
+      }), 5000);
+    }
+  }
+
+  render() {
+    if (this.state.redirect) {
+      return (
+        /*#__PURE__*/
+        (0, _jsxRuntime.jsx)(_reactRouterDom.Redirect, {
+          to: "/"
+        })
+      );
+    } else if (this.state.hasError) {
+      return (
+        /*#__PURE__*/
+        (0, _jsxRuntime.jsxs)("h2", {
+          children: ["There was an error with this listing. ",
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsx)(_reactRouterDom.Link, {
+            to: "/",
+            children: "Click here"
+          }), ' ', "to back to the home page or wait five seconds."]
+        })
+      );
+    }
+
+    return this.props.children;
+  }
+
+}
+
+var _default = ErrorBoundary;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"Modal.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = require("react");
+
+var _reactDom = require("react-dom");
+
+var _jsxRuntime = require("react/jsx-runtime");
+
+const modalRoot = document.getElementById('modal');
+
+const Modal = ({
+  children
+}) => {
+  const elRef = (0, _react.useRef)(null);
+
+  if (!elRef.current) {
+    elRef.current = document.createElement('div');
+  }
+
+  (0, _react.useEffect)(() => {
+    modalRoot.appendChild(elRef.current);
+    return () => modalRoot.removeChild(elRef.current);
+  }, []);
+  return (
+    /*#__PURE__*/
+    (0, _reactDom.createPortal)(
+    /*#__PURE__*/
+    (0, _jsxRuntime.jsx)("div", {
+      children: children
+    }), elRef.current)
+  );
+};
+
+var _default = Modal;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"Details.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = DetailsErrorBoundary;
+
+var _react = require("react");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _ThemeContext = _interopRequireDefault(require("./ThemeContext"));
+
 var _Carousel = _interopRequireDefault(require("./Carousel"));
+
+var _ErrorBoundary = _interopRequireDefault(require("./ErrorBoundary"));
+
+var _Modal = _interopRequireDefault(require("./Modal"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -35036,8 +35171,15 @@ class Details extends _react.Component {
     super(...args);
 
     _defineProperty(this, "state", {
-      loading: true
+      loading: true,
+      showModal: false
     });
+
+    _defineProperty(this, "toggleModal", () => this.setState({
+      showModal: !this.state.showModal
+    }));
+
+    _defineProperty(this, "adopt", () => window.location = 'http://bit.ly/pet-adopt');
   }
 
   async componentDidMount() {
@@ -35065,7 +35207,8 @@ class Details extends _react.Component {
       state,
       description,
       name,
-      images
+      images,
+      showModal
     } = this.state;
     return (
       /*#__PURE__*/
@@ -35088,13 +35231,48 @@ class Details extends _react.Component {
             children: `${animal} — ${breed} — ${city}, ${state}`
           }),
           /*#__PURE__*/
-          (0, _jsxRuntime.jsxs)("button", {
-            children: ["Adopt ", name]
+          (0, _jsxRuntime.jsx)(_ThemeContext.default.Consumer, {
+            children: ([theme]) =>
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsxs)("button", {
+              onClick: this.toggleModal,
+              style: {
+                backgroundColor: theme
+              },
+              children: ["Adopt ", name]
+            })
           }),
           /*#__PURE__*/
           (0, _jsxRuntime.jsx)("p", {
             children: description
-          })]
+          }), showModal ?
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsx)(_Modal.default, {
+            children:
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsxs)("div", {
+              children: [
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsxs)("h1", {
+                children: ["Would you like to adopt ", name, "?"]
+              }),
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsxs)("div", {
+                className: "buttons",
+                children: [
+                /*#__PURE__*/
+                (0, _jsxRuntime.jsx)("button", {
+                  onClick: this.adopt,
+                  children: "Yes"
+                }),
+                /*#__PURE__*/
+                (0, _jsxRuntime.jsx)("button", {
+                  onClick: this.toggleModal,
+                  children: "No"
+                })]
+              })]
+            })
+          }) : null]
         })]
       })
     );
@@ -35102,10 +35280,20 @@ class Details extends _react.Component {
 
 }
 
-var _default = (0, _reactRouterDom.withRouter)(Details);
+const DetailsWithRouter = (0, _reactRouterDom.withRouter)(Details);
 
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./Carousel":"Carousel.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"useBreedList.js":[function(require,module,exports) {
+function DetailsErrorBoundary(props) {
+  return (
+    /*#__PURE__*/
+    (0, _jsxRuntime.jsx)(_ErrorBoundary.default, {
+      children:
+      /*#__PURE__*/
+      (0, _jsxRuntime.jsx)(DetailsWithRouter, { ...props
+      })
+    })
+  );
+}
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./ThemeContext":"ThemeContext.js","./Carousel":"Carousel.js","./ErrorBoundary":"ErrorBoundary.js","./Modal":"Modal.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"useBreedList.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35262,6 +35450,8 @@ exports.default = void 0;
 
 var _react = require("react");
 
+var _ThemeContext = _interopRequireDefault(require("./ThemeContext"));
+
 var _useBreedList = _interopRequireDefault(require("./useBreedList"));
 
 var _Results = _interopRequireDefault(require("./Results"));
@@ -35278,6 +35468,7 @@ const SearchParams = () => {
   const [breed, updateBreed] = (0, _react.useState)('');
   const [pets, setPets] = (0, _react.useState)([]);
   const [breeds] = (0, _useBreedList.default)(animal);
+  const [theme, setTheme] = (0, _react.useContext)(_ThemeContext.default);
   (0, _react.useEffect)(() => {
     requestPets();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -35354,7 +35545,42 @@ const SearchParams = () => {
           })]
         }),
         /*#__PURE__*/
+        (0, _jsxRuntime.jsxs)("label", {
+          htmlFor: "theme",
+          children: ["Theme",
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsxs)("select", {
+            value: theme,
+            onChange: e => setTheme(e.target.value),
+            onBlur: e => setTheme(e.target.value),
+            children: [
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsx)("option", {
+              value: "peru",
+              children: "Peru"
+            }),
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsx)("option", {
+              value: "darkblue",
+              children: "Dark Blue"
+            }),
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsx)("option", {
+              value: "chartreuse",
+              children: "Chartreuse"
+            }),
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsx)("option", {
+              value: "mediumorchid",
+              children: "Medium Orchid"
+            })]
+          })]
+        }),
+        /*#__PURE__*/
         (0, _jsxRuntime.jsx)("button", {
+          style: {
+            backgroundColor: theme
+          },
           children: "Submit"
         })]
       }),
@@ -35368,7 +35594,7 @@ const SearchParams = () => {
 
 var _default = SearchParams;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./useBreedList":"useBreedList.js","./Results":"Results.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./ThemeContext":"ThemeContext.js","./useBreedList":"useBreedList.js","./Results":"Results.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 var _react = require("react");
@@ -35381,45 +35607,53 @@ var _Details = _interopRequireDefault(require("./Details"));
 
 var _SearchParams = _interopRequireDefault(require("./SearchParams"));
 
+var _ThemeContext = _interopRequireDefault(require("./ThemeContext"));
+
 var _jsxRuntime = require("react/jsx-runtime");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const App = () => {
+  const theme = (0, _react.useState)('darkblue');
   return (
     /*#__PURE__*/
-    (0, _jsxRuntime.jsx)("div", {
+    (0, _jsxRuntime.jsx)(_ThemeContext.default.Provider, {
+      value: theme,
       children:
       /*#__PURE__*/
-      (0, _jsxRuntime.jsxs)(_reactRouterDom.BrowserRouter, {
-        children: [
+      (0, _jsxRuntime.jsx)("div", {
+        children:
         /*#__PURE__*/
-        (0, _jsxRuntime.jsx)("header", {
-          children:
-          /*#__PURE__*/
-          (0, _jsxRuntime.jsx)(_reactRouterDom.Link, {
-            to: "/",
-            children: "Adopt Me!"
-          })
-        }),
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsxs)(_reactRouterDom.Switch, {
+        (0, _jsxRuntime.jsxs)(_reactRouterDom.BrowserRouter, {
           children: [
           /*#__PURE__*/
-          (0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
-            path: "/details/:id",
+          (0, _jsxRuntime.jsx)("header", {
             children:
             /*#__PURE__*/
-            (0, _jsxRuntime.jsx)(_Details.default, {})
+            (0, _jsxRuntime.jsx)(_reactRouterDom.Link, {
+              to: "/",
+              children: "Adopt Me!"
+            })
           }),
           /*#__PURE__*/
-          (0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
-            path: "/",
-            children:
+          (0, _jsxRuntime.jsxs)(_reactRouterDom.Switch, {
+            children: [
             /*#__PURE__*/
-            (0, _jsxRuntime.jsx)(_SearchParams.default, {})
+            (0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
+              path: "/details/:id",
+              children:
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)(_Details.default, {})
+            }),
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
+              path: "/",
+              children:
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)(_SearchParams.default, {})
+            })]
           })]
-        })]
+        })
       })
     })
   );
@@ -35432,7 +35666,7 @@ const App = () => {
   /*#__PURE__*/
   (0, _jsxRuntime.jsx)(App, {})
 }), document.getElementById('root'));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./Details":"Details.js","./SearchParams":"SearchParams.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./Details":"Details.js","./SearchParams":"SearchParams.js","./ThemeContext":"ThemeContext.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -35460,7 +35694,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50751" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51915" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
