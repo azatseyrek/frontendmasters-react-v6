@@ -10608,7 +10608,7 @@ if ("development" !== "production") {
       }
 
       var eventName = 'on' + eventNameSuffix;
-      var isSupported = eventName in document;
+      var isSupported = (eventName in document);
 
       if (!isSupported) {
         var element = document.createElement('div');
@@ -23123,18 +23123,18 @@ if ("development" !== "production") {
 
                   if (renderState.tail === null && renderState.tailMode === 'hidden' && !renderedTail.alternate && !getIsHydrating() // We don't cut it if we're hydrating.
                   ) {
-                      // We need to delete the row we just rendered.
-                      // Reset the effect list to what it was before we rendered this
-                      // child. The nested children have already appended themselves.
-                      var lastEffect = workInProgress.lastEffect = renderState.lastEffect; // Remove any effects that were appended after this point.
+                    // We need to delete the row we just rendered.
+                    // Reset the effect list to what it was before we rendered this
+                    // child. The nested children have already appended themselves.
+                    var lastEffect = workInProgress.lastEffect = renderState.lastEffect; // Remove any effects that were appended after this point.
 
-                      if (lastEffect !== null) {
-                        lastEffect.nextEffect = null;
-                      } // We're done.
+                    if (lastEffect !== null) {
+                      lastEffect.nextEffect = null;
+                    } // We're done.
 
 
-                      return null;
-                    }
+                    return null;
+                  }
                 } else if ( // The time it took to render last row is greater than the remaining
                 // time we have to render. So rendering one more row would likely
                 // exceed it.
@@ -29566,7 +29566,23 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _setPrototypeOf;
+
+function _setPrototypeOf(o, p) {
+  exports.default = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+},{}],"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29574,12 +29590,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _inheritsLoose;
 
+var _setPrototypeOf = _interopRequireDefault(require("./setPrototypeOf.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
+  (0, _setPrototypeOf.default)(subClass, superClass);
 }
-},{}],"../node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
+},{"./setPrototypeOf.js":"../node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js"}],"../node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
 /** @license React v16.13.1
  * react-is.development.js
  *
@@ -31710,40 +31730,7 @@ function createMemoryHistory(props) {
   };
   return history;
 }
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","resolve-pathname":"../node_modules/resolve-pathname/esm/resolve-pathname.js","value-equal":"../node_modules/value-equal/esm/value-equal.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js","tiny-invariant":"../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"../node_modules/mini-create-react-context/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _setPrototypeOf;
-
-function _setPrototypeOf(o, p) {
-  exports.default = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-},{}],"../node_modules/mini-create-react-context/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _inheritsLoose;
-
-var _setPrototypeOf = _interopRequireDefault(require("./setPrototypeOf.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  (0, _setPrototypeOf.default)(subClass, superClass);
-}
-},{"./setPrototypeOf.js":"../node_modules/mini-create-react-context/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js"}],"../node_modules/mini-create-react-context/dist/esm/index.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","resolve-pathname":"../node_modules/resolve-pathname/esm/resolve-pathname.js","value-equal":"../node_modules/value-equal/esm/value-equal.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js","tiny-invariant":"../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"../node_modules/mini-create-react-context/dist/esm/index.js":[function(require,module,exports) {
 var global = arguments[3];
 "use strict";
 
@@ -31814,9 +31801,7 @@ function createReactContext(defaultValue, calculateChangedBits) {
 
   var contextProp = '__create-react-context-' + getUniqueId() + '__';
 
-  var Provider =
-  /*#__PURE__*/
-  function (_Component) {
+  var Provider = /*#__PURE__*/function (_Component) {
     (0, _inheritsLoose2.default)(Provider, _Component);
 
     function Provider() {
@@ -31868,9 +31853,7 @@ function createReactContext(defaultValue, calculateChangedBits) {
 
   Provider.childContextTypes = (_Provider$childContex = {}, _Provider$childContex[contextProp] = _propTypes.default.object.isRequired, _Provider$childContex);
 
-  var Consumer =
-  /*#__PURE__*/
-  function (_Component2) {
+  var Consumer = /*#__PURE__*/function (_Component2) {
     (0, _inheritsLoose2.default)(Consumer, _Component2);
 
     function Consumer() {
@@ -31941,7 +31924,7 @@ function createReactContext(defaultValue, calculateChangedBits) {
 var index = _react.default.createContext || createReactContext;
 var _default = index;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/mini-create-react-context/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","prop-types":"../node_modules/prop-types/index.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js"}],"../node_modules/path-to-regexp/node_modules/isarray/index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","prop-types":"../node_modules/prop-types/index.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js"}],"../node_modules/path-to-regexp/node_modules/isarray/index.js":[function(require,module,exports) {
 module.exports = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 };
@@ -32553,9 +32536,7 @@ var createNamedContext = function createNamedContext(name) {
   return context;
 };
 
-var historyContext =
-/*#__PURE__*/
-createNamedContext("Router-History"); // TODO: Replace with React.createContext once we can assume React 16+
+var historyContext = /*#__PURE__*/createNamedContext("Router-History"); // TODO: Replace with React.createContext once we can assume React 16+
 
 exports.__HistoryContext = historyContext;
 
@@ -32565,18 +32546,14 @@ var createNamedContext$1 = function createNamedContext(name) {
   return context;
 };
 
-var context =
-/*#__PURE__*/
-createNamedContext$1("Router");
+var context = /*#__PURE__*/createNamedContext$1("Router");
 /**
  * The public API for putting history on context.
  */
 
 exports.__RouterContext = context;
 
-var Router =
-/*#__PURE__*/
-function (_React$Component) {
+var Router = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(Router, _React$Component);
 
   Router.computeRootMatch = function computeRootMatch(pathname) {
@@ -32669,9 +32646,7 @@ if ("development" !== "production") {
  */
 
 
-var MemoryRouter =
-/*#__PURE__*/
-function (_React$Component) {
+var MemoryRouter = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(MemoryRouter, _React$Component);
 
   function MemoryRouter() {
@@ -32714,9 +32689,7 @@ if ("development" !== "production") {
   };
 }
 
-var Lifecycle =
-/*#__PURE__*/
-function (_React$Component) {
+var Lifecycle = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(Lifecycle, _React$Component);
 
   function Lifecycle() {
@@ -32962,9 +32935,7 @@ function evalChildrenDev(children, props, path) {
  */
 
 
-var Route =
-/*#__PURE__*/
-function (_React$Component) {
+var Route = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(Route, _React$Component);
 
   function Route() {
@@ -33073,9 +33044,7 @@ function noop() {}
  */
 
 
-var StaticRouter =
-/*#__PURE__*/
-function (_React$Component) {
+var StaticRouter = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(StaticRouter, _React$Component);
 
   function StaticRouter() {
@@ -33169,9 +33138,7 @@ if ("development" !== "production") {
  */
 
 
-var Switch =
-/*#__PURE__*/
-function (_React$Component) {
+var Switch = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(Switch, _React$Component);
 
   function Switch() {
@@ -33429,9 +33396,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * The public API for a <Router> that uses HTML5 history.
  */
-var BrowserRouter =
-/*#__PURE__*/
-function (_React$Component) {
+var BrowserRouter = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(BrowserRouter, _React$Component);
 
   function BrowserRouter() {
@@ -33478,9 +33443,7 @@ if ("development" !== "production") {
  */
 
 
-var HashRouter =
-/*#__PURE__*/
-function (_React$Component) {
+var HashRouter = /*#__PURE__*/function (_React$Component) {
   (0, _inheritsLoose2.default)(HashRouter, _React$Component);
 
   function HashRouter() {
@@ -33564,9 +33527,9 @@ var LinkAnchor = forwardRef(function (_ref, forwardedRef) {
       !target || target === "_self") && // let browser handle "target=_blank" etc.
       !isModifiedEvent(event) // ignore clicks with modifier keys
       ) {
-          event.preventDefault();
-          navigate();
-        }
+        event.preventDefault();
+        navigate();
+      }
     }
   }); // React 15 compat
 
@@ -33740,9 +33703,7 @@ exports.default = void 0;
 
 var _react = require("react");
 
-const ThemeContext =
-/*#__PURE__*/
-(0, _react.createContext)(['green', () => {}]);
+const ThemeContext = /*#__PURE__*/(0, _react.createContext)(['green', () => {}]);
 var _default = ThemeContext;
 exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"../node_modules/react/cjs/react-jsx-runtime.development.js":[function(require,module,exports) {
@@ -34990,32 +34951,25 @@ class Carousel extends _react.Component {
     const {
       images
     } = this.props;
-    return (
-      /*#__PURE__*/
-      (0, _jsxRuntime.jsxs)("div", {
-        className: "carousel",
-        children: [
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: "carousel",
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
+        src: images[active],
+        alt: "animal"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: "carousel-smaller",
+        children: images.map((photo, index) =>
         /*#__PURE__*/
+        // eslint-disable-next-line
         (0, _jsxRuntime.jsx)("img", {
-          src: images[active],
-          alt: "animal"
-        }),
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsx)("div", {
-          className: "carousel-smaller",
-          children: images.map((photo, index) =>
-          /*#__PURE__*/
-          // eslint-disable-next-line
-          (0, _jsxRuntime.jsx)("img", {
-            src: photo,
-            onClick: this.handleIndexClick,
-            "data-index": index,
-            className: index === active ? 'active' : '',
-            alt: "animal thumbnail"
-          }, photo))
-        })]
-      })
-    );
+          src: photo,
+          onClick: this.handleIndexClick,
+          "data-index": index,
+          className: index === active ? 'active' : '',
+          alt: "animal thumbnail"
+        }, photo))
+      })]
+    });
   }
 
 }
@@ -35072,24 +35026,16 @@ class ErrorBoundary extends _react.Component {
 
   render() {
     if (this.state.redirect) {
-      return (
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsx)(_reactRouterDom.Redirect, {
-          to: "/"
-        })
-      );
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Redirect, {
+        to: "/"
+      });
     } else if (this.state.hasError) {
-      return (
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsxs)("h2", {
-          children: ["There was an error with this listing. ",
-          /*#__PURE__*/
-          (0, _jsxRuntime.jsx)(_reactRouterDom.Link, {
-            to: "/",
-            children: "Click here"
-          }), ' ', "to back to the home page or wait five seconds."]
-        })
-      );
+      return /*#__PURE__*/(0, _jsxRuntime.jsxs)("h2", {
+        children: ["There was an error with this listing. ", /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Link, {
+          to: "/",
+          children: "Click here"
+        }), ' ', "to back to the home page or wait five seconds."]
+      });
     }
 
     return this.props.children;
@@ -35128,14 +35074,9 @@ const Modal = ({
     modalRoot.appendChild(elRef.current);
     return () => modalRoot.removeChild(elRef.current);
   }, []);
-  return (
-    /*#__PURE__*/
-    (0, _reactDom.createPortal)(
-    /*#__PURE__*/
-    (0, _jsxRuntime.jsx)("div", {
-      children: children
-    }), elRef.current)
-  );
+  return /*#__PURE__*/(0, _reactDom.createPortal)( /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    children: children
+  }), elRef.current);
 };
 
 var _default = Modal;
@@ -35192,12 +35133,9 @@ class Details extends _react.Component {
 
   render() {
     if (this.state.loading) {
-      return (
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsx)("h2", {
-          children: "loading \u2026 "
-        })
-      );
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)("h2", {
+        children: "loading \u2026 "
+      });
     }
 
     const {
@@ -35210,72 +35148,43 @@ class Details extends _react.Component {
       images,
       showModal
     } = this.state;
-    return (
-      /*#__PURE__*/
-      (0, _jsxRuntime.jsxs)("div", {
-        className: "details",
-        children: [
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsx)(_Carousel.default, {
-          images: images
-        }),
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsxs)("div", {
-          children: [
-          /*#__PURE__*/
-          (0, _jsxRuntime.jsx)("h1", {
-            children: name
-          }),
-          /*#__PURE__*/
-          (0, _jsxRuntime.jsx)("h2", {
-            children: `${animal} — ${breed} — ${city}, ${state}`
-          }),
-          /*#__PURE__*/
-          (0, _jsxRuntime.jsx)(_ThemeContext.default.Consumer, {
-            children: ([theme]) =>
-            /*#__PURE__*/
-            (0, _jsxRuntime.jsxs)("button", {
-              onClick: this.toggleModal,
-              style: {
-                backgroundColor: theme
-              },
-              children: ["Adopt ", name]
-            })
-          }),
-          /*#__PURE__*/
-          (0, _jsxRuntime.jsx)("p", {
-            children: description
-          }), showModal ?
-          /*#__PURE__*/
-          (0, _jsxRuntime.jsx)(_Modal.default, {
-            children:
-            /*#__PURE__*/
-            (0, _jsxRuntime.jsxs)("div", {
-              children: [
-              /*#__PURE__*/
-              (0, _jsxRuntime.jsxs)("h1", {
-                children: ["Would you like to adopt ", name, "?"]
-              }),
-              /*#__PURE__*/
-              (0, _jsxRuntime.jsxs)("div", {
-                className: "buttons",
-                children: [
-                /*#__PURE__*/
-                (0, _jsxRuntime.jsx)("button", {
-                  onClick: this.adopt,
-                  children: "Yes"
-                }),
-                /*#__PURE__*/
-                (0, _jsxRuntime.jsx)("button", {
-                  onClick: this.toggleModal,
-                  children: "No"
-                })]
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: "details",
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Carousel.default, {
+        images: images
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("h1", {
+          children: name
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("h2", {
+          children: `${animal} — ${breed} — ${city}, ${state}`
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ThemeContext.default.Consumer, {
+          children: ([theme]) => /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+            onClick: this.toggleModal,
+            style: {
+              backgroundColor: theme
+            },
+            children: ["Adopt ", name]
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          children: description
+        }), showModal ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_Modal.default, {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("h1", {
+              children: ["Would you like to adopt ", name, "?"]
+            }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+              className: "buttons",
+              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+                onClick: this.adopt,
+                children: "Yes"
+              }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+                onClick: this.toggleModal,
+                children: "No"
               })]
-            })
-          }) : null]
-        })]
-      })
-    );
+            })]
+          })
+        }) : null]
+      })]
+    });
   }
 
 }
@@ -35283,15 +35192,10 @@ class Details extends _react.Component {
 const DetailsWithRouter = (0, _reactRouterDom.withRouter)(Details);
 
 function DetailsErrorBoundary(props) {
-  return (
-    /*#__PURE__*/
-    (0, _jsxRuntime.jsx)(_ErrorBoundary.default, {
-      children:
-      /*#__PURE__*/
-      (0, _jsxRuntime.jsx)(DetailsWithRouter, { ...props
-      })
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ErrorBoundary.default, {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(DetailsWithRouter, { ...props
     })
-  );
+  });
 }
 },{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./ThemeContext":"ThemeContext.js","./Carousel":"Carousel.js","./ErrorBoundary":"ErrorBoundary.js","./Modal":"Modal.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"useBreedList.js":[function(require,module,exports) {
 "use strict";
@@ -35361,37 +35265,24 @@ const Pet = props => {
     hero = images[0];
   }
 
-  return (
-    /*#__PURE__*/
-    (0, _jsxRuntime.jsxs)(_reactRouterDom.Link, {
-      to: `/details/${id}`,
-      className: "pet",
-      children: [
-      /*#__PURE__*/
-      (0, _jsxRuntime.jsx)("div", {
-        className: "image-container",
-        children:
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsx)("img", {
-          src: hero,
-          alt: name
-        })
-      }),
-      /*#__PURE__*/
-      (0, _jsxRuntime.jsxs)("div", {
-        className: "info",
-        children: [
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsx)("h1", {
-          children: name
-        }),
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsx)("h2", {
-          children: `${animal} — ${breed} — ${location}`
-        })]
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Link, {
+    to: `/details/${id}`,
+    className: "pet",
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "image-container",
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
+        src: hero,
+        alt: name
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: "info",
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("h1", {
+        children: name
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("h2", {
+        children: `${animal} — ${breed} — ${location}`
       })]
-    })
-  );
+    })]
+  });
 };
 
 var _default = Pet;
@@ -35413,29 +35304,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const Results = ({
   pets
 }) => {
-  return (
-    /*#__PURE__*/
-    (0, _jsxRuntime.jsx)("div", {
-      className: "search",
-      children: !pets.length ?
-      /*#__PURE__*/
-      (0, _jsxRuntime.jsx)("h1", {
-        children: "No Pets Found"
-      }) : pets.map(pet => {
-        return (
-          /*#__PURE__*/
-          (0, _jsxRuntime.jsx)(_Pet.default, {
-            animal: pet.animal,
-            name: pet.name,
-            breed: pet.breed,
-            images: pet.images,
-            location: `${pet.city}, ${pet.state}`,
-            id: pet.id
-          }, pet.id)
-        );
-      })
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    className: "search",
+    children: !pets.length ? /*#__PURE__*/(0, _jsxRuntime.jsx)("h1", {
+      children: "No Pets Found"
+    }) : pets.map(pet => {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Pet.default, {
+        animal: pet.animal,
+        name: pet.name,
+        breed: pet.breed,
+        images: pet.images,
+        location: `${pet.city}, ${pet.state}`,
+        id: pet.id
+      }, pet.id);
     })
-  );
+  });
 };
 
 var _default = Results;
@@ -35479,117 +35362,76 @@ const SearchParams = () => {
     setPets(json.pets);
   }
 
-  return (
-    /*#__PURE__*/
-    (0, _jsxRuntime.jsxs)("div", {
-      className: "search-params",
-      children: [
-      /*#__PURE__*/
-      (0, _jsxRuntime.jsxs)("form", {
-        onSubmit: e => {
-          e.preventDefault();
-          requestPets();
-        },
-        children: [
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsxs)("label", {
-          htmlFor: "location",
-          children: ["Location",
-          /*#__PURE__*/
-          (0, _jsxRuntime.jsx)("input", {
-            id: "location",
-            value: location,
-            placeholder: "Location",
-            onChange: e => updateLocation(e.target.value)
-          })]
-        }),
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsxs)("label", {
-          htmlFor: "animal",
-          children: ["Animal",
-          /*#__PURE__*/
-          (0, _jsxRuntime.jsxs)("select", {
-            id: "animal",
-            value: animal,
-            onChange: e => updateAnimal(e.target.value),
-            onBlur: e => updateAnimal(e.target.value),
-            children: [
-            /*#__PURE__*/
-            (0, _jsxRuntime.jsx)("option", {}), ANIMALS.map(animal =>
-            /*#__PURE__*/
-            (0, _jsxRuntime.jsx)("option", {
-              value: animal,
-              children: animal
-            }, animal))]
-          })]
-        }),
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsxs)("label", {
-          htmlFor: "breed",
-          children: ["Breed",
-          /*#__PURE__*/
-          (0, _jsxRuntime.jsxs)("select", {
-            disabled: !breeds.length,
-            id: "breed",
-            value: breed,
-            onChange: e => updateBreed(e.target.value),
-            onBlur: e => updateBreed(e.target.value),
-            children: [
-            /*#__PURE__*/
-            (0, _jsxRuntime.jsx)("option", {}), breeds.map(breed =>
-            /*#__PURE__*/
-            (0, _jsxRuntime.jsx)("option", {
-              value: breed,
-              children: breed
-            }, breed))]
-          })]
-        }),
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsxs)("label", {
-          htmlFor: "theme",
-          children: ["Theme",
-          /*#__PURE__*/
-          (0, _jsxRuntime.jsxs)("select", {
-            value: theme,
-            onChange: e => setTheme(e.target.value),
-            onBlur: e => setTheme(e.target.value),
-            children: [
-            /*#__PURE__*/
-            (0, _jsxRuntime.jsx)("option", {
-              value: "peru",
-              children: "Peru"
-            }),
-            /*#__PURE__*/
-            (0, _jsxRuntime.jsx)("option", {
-              value: "darkblue",
-              children: "Dark Blue"
-            }),
-            /*#__PURE__*/
-            (0, _jsxRuntime.jsx)("option", {
-              value: "chartreuse",
-              children: "Chartreuse"
-            }),
-            /*#__PURE__*/
-            (0, _jsxRuntime.jsx)("option", {
-              value: "mediumorchid",
-              children: "Medium Orchid"
-            })]
-          })]
-        }),
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsx)("button", {
-          style: {
-            backgroundColor: theme
-          },
-          children: "Submit"
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    className: "search-params",
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("form", {
+      onSubmit: e => {
+        e.preventDefault();
+        requestPets();
+      },
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("label", {
+        htmlFor: "location",
+        children: ["Location", /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+          id: "location",
+          value: location,
+          placeholder: "Location",
+          onChange: e => updateLocation(e.target.value)
         })]
-      }),
-      /*#__PURE__*/
-      (0, _jsxRuntime.jsx)(_Results.default, {
-        pets: pets
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("label", {
+        htmlFor: "animal",
+        children: ["Animal", /*#__PURE__*/(0, _jsxRuntime.jsxs)("select", {
+          id: "animal",
+          value: animal,
+          onChange: e => updateAnimal(e.target.value),
+          onBlur: e => updateAnimal(e.target.value),
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("option", {}), ANIMALS.map(animal => /*#__PURE__*/(0, _jsxRuntime.jsx)("option", {
+            value: animal,
+            children: animal
+          }, animal))]
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("label", {
+        htmlFor: "breed",
+        children: ["Breed", /*#__PURE__*/(0, _jsxRuntime.jsxs)("select", {
+          disabled: !breeds.length,
+          id: "breed",
+          value: breed,
+          onChange: e => updateBreed(e.target.value),
+          onBlur: e => updateBreed(e.target.value),
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("option", {}), breeds.map(breed => /*#__PURE__*/(0, _jsxRuntime.jsx)("option", {
+            value: breed,
+            children: breed
+          }, breed))]
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("label", {
+        htmlFor: "theme",
+        children: ["Theme", /*#__PURE__*/(0, _jsxRuntime.jsxs)("select", {
+          value: theme,
+          onChange: e => setTheme(e.target.value),
+          onBlur: e => setTheme(e.target.value),
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("option", {
+            value: "peru",
+            children: "Peru"
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("option", {
+            value: "darkblue",
+            children: "Dark Blue"
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("option", {
+            value: "chartreuse",
+            children: "Chartreuse"
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("option", {
+            value: "mediumorchid",
+            children: "Medium Orchid"
+          })]
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+        style: {
+          backgroundColor: theme
+        },
+        children: "Submit"
       })]
-    })
-  );
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Results.default, {
+      pets: pets
+    })]
+  });
 };
 
 var _default = SearchParams;
@@ -35613,58 +35455,39 @@ var _jsxRuntime = require("react/jsx-runtime");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// eslint-disable-next-line
 const App = () => {
   const theme = (0, _react.useState)('darkblue');
-  return (
-    /*#__PURE__*/
-    (0, _jsxRuntime.jsx)(_ThemeContext.default.Provider, {
-      value: theme,
-      children:
-      /*#__PURE__*/
-      (0, _jsxRuntime.jsx)("div", {
-        children:
-        /*#__PURE__*/
-        (0, _jsxRuntime.jsxs)(_reactRouterDom.BrowserRouter, {
-          children: [
-          /*#__PURE__*/
-          (0, _jsxRuntime.jsx)("header", {
-            children:
-            /*#__PURE__*/
-            (0, _jsxRuntime.jsx)(_reactRouterDom.Link, {
-              to: "/",
-              children: "Adopt Me!"
-            })
-          }),
-          /*#__PURE__*/
-          (0, _jsxRuntime.jsxs)(_reactRouterDom.Switch, {
-            children: [
-            /*#__PURE__*/
-            (0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
-              path: "/details/:id",
-              children:
-              /*#__PURE__*/
-              (0, _jsxRuntime.jsx)(_Details.default, {})
-            }),
-            /*#__PURE__*/
-            (0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
-              path: "/",
-              children:
-              /*#__PURE__*/
-              (0, _jsxRuntime.jsx)(_SearchParams.default, {})
-            })]
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ThemeContext.default.Provider, {
+    value: theme,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "p-0 m-0",
+      style: {
+        background: 'url(http://pets-images.dev-apis.com/pets/wallpaperA.jpg)'
+      },
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.BrowserRouter, {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("header", {
+          className: "w-full mb-10 text-center p-7 bg-gradient-to-b from-purple-400 to-red-500",
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Link, {
+            to: "/",
+            children: "Adopt Me!"
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Switch, {
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
+            path: "/details/:id",
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Details.default, {})
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
+            path: "/",
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_SearchParams.default, {})
           })]
-        })
+        })]
       })
     })
-  );
+  });
 };
 
-(0, _reactDom.render)(
-/*#__PURE__*/
-(0, _jsxRuntime.jsx)(_react.StrictMode, {
-  children:
-  /*#__PURE__*/
-  (0, _jsxRuntime.jsx)(App, {})
+(0, _reactDom.render)( /*#__PURE__*/(0, _jsxRuntime.jsx)(_react.StrictMode, {
+  children: /*#__PURE__*/(0, _jsxRuntime.jsx)(App, {})
 }), document.getElementById('root'));
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./Details":"Details.js","./SearchParams":"SearchParams.js","./ThemeContext":"ThemeContext.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -35694,7 +35517,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51915" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50674" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -35725,8 +35548,9 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
         assetsToAccept.forEach(function (v) {
           hmrAcceptRun(v[0], v[1]);
         });
-      } else {
-        window.location.reload();
+      } else if (location.reload) {
+        // `location` global exists in a web worker context but lacks `.reload()` function.
+        location.reload();
       }
     }
 
